@@ -39,8 +39,11 @@ function getESTKCommand( scriptFile ) {
 function getESTKPath() {
 	let path = null
 
+	if ( process.env.ESTK_PATH ) {
+		path = checkPaths( process.env.ESTK_PATH )
+
 	// OSX
-	if ( process.platform === 'darwin' ) {
+	} else if ( process.platform === 'darwin' ) {
 		path = checkPaths(
 			'/Applications/Adobe ExtendScript Toolkit CC/ExtendScript Toolkit.app/Contents/MacOS/ExtendScript Toolkit',
 			'/Applications/Utilities/Adobe Utilities - CS6.localized/ExtendScript Toolkit CS6/ExtendScript Toolkit.app/Contents/MacOS/ExtendScript Toolkit'
@@ -55,7 +58,7 @@ function getESTKPath() {
 
 	// Linux
 	} else {
-		throw Error( `Platform ${process.platform} is not supported` )
+		throw Error( `Platform ${process.platform} is not supported and ESTK_PATH invalid or not set` )
 	}
 
 	log.debug( 'ESTK Path:', path )
