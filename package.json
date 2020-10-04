@@ -28,7 +28,7 @@
     "test": "eslint . && mocha",
     "postinstall:default": "tar -xzf esdebugger-core.tar.gz",
     "postinstall:win32": "tar -xzf esdebugger-core-win.tar.gz",
-    "postinstall": "run-script-os"
+    "postinstall": "./node_modules/.bin/run-script-os"
   },
   "dependencies": {
     "command-line-args": "^4.0.4",
