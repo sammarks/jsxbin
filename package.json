@@ -26,13 +26,16 @@
   "repository": "github:runegan/jsxbin",
   "scripts": {
     "test": "eslint . && mocha",
-    "postinstall": "tar -xzf esdebugger-core.tar.gz"
+    "postinstall:default": "tar -xzf esdebugger-core.tar.gz",
+    "postinstall:win32": "tar -xzf esdebugger-core-win.tar.gz",
+    "postinstall": "run-script-os"
   },
   "dependencies": {
     "command-line-args": "^4.0.4",
     "command-line-usage": "^4.0.0",
     "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
+    "run-script-os": "^1.1.1",
     "winston": "^2.3.1"
   },
   "devDependencies": {
